@@ -1,8 +1,8 @@
 package testtask.operations;
 
-public class Sqrt extends Operation {
-    public Sqrt() {
-        super("sqrt");
+public class Root extends Operation {
+    public Root() {
+        super("root");
     }
 
     @Override

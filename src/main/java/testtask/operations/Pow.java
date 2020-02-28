@@ -2,7 +2,7 @@ package testtask.operations;
 
 public class Pow extends Operation {
     public Pow() {
-        super("**", "sqr");
+        super("**", "pow");
     }
 
     @Override

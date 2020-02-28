@@ -10,7 +10,7 @@ public class Program {
             new Plus(),
             new Division(),
             new Pow(),
-            new Sqrt()
+            new Root()
     };
 
     public static void main(String[] args) {
