@@ -1,35 +1,17 @@
 package testtask;
 
-import testtask.operations.*;
-import testtask.exception.UnknownOperation;
-
 public class Program {
-    static Operation[] operations = {
-            new Minus(),
-            new Multiply(),
-            new Plus(),
-            new Division(),
-            new Pow(),
-            new Root()
-    };
+    static ClientDataScanner scanner = new ClientDataScanner();
+    static Calculator calculator = new Calculator();
 
     public static void main(String[] args) {
-        ClientData clientData = new ClientData();
+        System.out.println("Введите строку по шаблону:");
+        System.out.println("<число> <операция> <число>");
+        Data inputData = scanner.getData();
 
-        Operation operation = findOperation(clientData.operationName);
-
-        float result = operation.toCalc(clientData.a, clientData.b);
+        System.out.print("Результат: ");
+        float result = calculator.toCalc(inputData);
 
         System.out.println(result);
-    }
-
-    static Operation findOperation(String operationName) {
-        for (Operation operation : operations) {
-            if (operation.isHereOperation(operationName)) {
-                return operation;
-            }
-        }
-
-        throw new UnknownOperation(operationName);
     }
 }

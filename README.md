@@ -167,7 +167,7 @@ public class Pow extends Operation {
     }
 }
 ````
-После этого нужно добавить экземпляр реализованного класса в массив operations класса Program
+После этого нужно добавить экземпляр реализованного класса в массив operations класса Calculator
 
 ````java
 static Operation[] operations = {

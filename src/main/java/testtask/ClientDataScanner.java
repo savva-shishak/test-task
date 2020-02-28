@@ -7,19 +7,20 @@ import testtask.numbers.Number;
 
 import java.util.Scanner;
 
-public class ClientData {
-    public int a, b;
-    public String operationName;
-
-    public ClientData() {
+public class ClientDataScanner {
+    Data getData() {
         String[] response = requestData();
 
-        operationName = response[1];
+        Data result = new Data();
 
-        setNumbers(response[0], response[2]);
+        result.operationName = response[1];
+
+        setNumbers(response[0], response[2], result);
+
+        return result;
     }
 
-    String[] requestData() {
+    private String[] requestData() {
         Scanner scanner = new Scanner(System.in);
         String[] response = scanner.nextLine().split(" ");
 
@@ -30,7 +31,7 @@ public class ClientData {
         return response;
     }
 
-    void setNumbers(String strA, String strB) {
+    private void setNumbers(String strA, String strB, Data obj) {
         Number a = findNumber(strA);
         Number b = findNumber(strB);
 
@@ -38,11 +39,11 @@ public class ClientData {
             throw new VariousNumberTypes(a.type, b.type);
         }
 
-        this.a = a.value;
-        this.b = b.value;
+        obj.a = a.value;
+        obj.b = b.value;
     }
 
-    Number findNumber(String str) {
+    private Number findNumber(String str) {
         for (Number number : Number.values()) {
             if (number.equals(str)) {
                 return number;
