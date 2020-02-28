@@ -1,28 +1,35 @@
 package testtask;
 
-import testtask.caculators.*;
+import testtask.operations.*;
 import testtask.exception.UnknownOperation;
 
 public class Program {
-    static Calculator[] calculators = {
+    static Operation[] operations = {
             new Minus(),
             new Multiply(),
             new Plus(),
-            new Division()
+            new Division(),
+            new Pow(),
+            new Sqrt()
     };
 
     public static void main(String[] args) {
-        ClientScanner clientScanner = new ClientScanner();
+        ClientData clientData = new ClientData();
 
-        clientScanner.requestData();
+        Operation operation = findOperation(clientData.operationName);
 
-        for (Calculator calculator : calculators) {
-            if (calculator.isHereOperation(clientScanner.operationName)) {
-                System.out.println(calculator.toCalc(clientScanner.a, clientScanner.b));
-                return;
+        float result = operation.toCalc(clientData.a, clientData.b);
+
+        System.out.println(result);
+    }
+
+    static Operation findOperation(String operationName) {
+        for (Operation operation : operations) {
+            if (operation.isHereOperation(operationName)) {
+                return operation;
             }
         }
 
-        throw new UnknownOperation(clientScanner.operationName);
+        throw new UnknownOperation(operationName);
     }
 }
