@@ -1,7 +1,7 @@
 package testtask.numbers;
 
 public enum TypeNumber {
-    JUST("обычное число"), ROM("Римское число"), WORD("Слово");
+    JUST("Обычное число"), ROM("Римское число"), WORD("Слово");
 
     public String typeName;
 
