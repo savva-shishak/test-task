@@ -22,16 +22,16 @@ public enum Number {
     ROM_NINE (9, "|V",  ROM), ROM_TEN   (10, "X",    ROM);
 
     public int value;
-    public String romValue;
+    public String stringValue;
     public TypeNumber type;
 
     Number(int v, String r, TypeNumber t) {
         value = v;
-        romValue = r;
+        stringValue = r;
         type = t;
     }
 
     public boolean equals(String value) {
-        return romValue.equals(value);
+        return stringValue.equals(value);
     }
 }
